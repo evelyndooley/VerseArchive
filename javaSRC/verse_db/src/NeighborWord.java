@@ -1,5 +1,3 @@
-package verseDB;
-
 public class NeighborWord {
 
     private int numInstances = 1; /**number of instances of this neighbor */

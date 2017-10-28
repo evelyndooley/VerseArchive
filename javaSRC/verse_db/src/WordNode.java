@@ -1,5 +1,3 @@
-package verseDB;
-
 import java.util.HashMap;
 
 public class WordNode {
@@ -88,6 +86,9 @@ public class WordNode {
             if(rightNeighbors.containsKey(word)) {
                 return rightNeighbors.get(word).getNumInstances();
             }
+            else {
+                return 0;
+            }
         }
         return 0;
     }
@@ -137,6 +138,7 @@ public class WordNode {
     public int getIsEnd() {
         return isEnd;
     }
+
 
 
 }
