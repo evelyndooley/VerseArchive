@@ -11,14 +11,15 @@ public class MakeVerse {
     private Database verseDB;
     private Random dice;
     private String verse ="";
+    private String currWord = "";
     public MakeVerse(String initialWord){
-        verse = initialWord;
+        currWord= verse  = initialWord;
         dice = new Random(System.currentTimeMillis());
-        verseDB = new CreateDatabase("C:\\Users\\Dawn\\Documents\\GitHub\\VerseArchive\\allpoems.txt");
+        verseDB = new Database("C:\\Users\\Dawn\\Documents\\GitHub\\VerseArchive\\allpoems.txt");
     }
     /// sortedNeighbors turns the hashmap of the most recent words right hand neighbors into an ordered list
     /// of its most likely child words.
-    public  ArrayList<Map.Entry<String, NeighborWord>> sortedNeighbors(String lastWord){
+    private  ArrayList<Map.Entry<String, NeighborWord>> sortedNeighbors(String lastWord){
         if(verseDB.getWordNode(lastWord) != null){
             HashMap<String,NeighborWord> nextMap = verseDB.getRightNeighborsMap(lastWord);
             ArrayList<Map.Entry<String, NeighborWord>> sortMap= new ArrayList<>(nextMap.entrySet());
@@ -28,8 +29,41 @@ public class MakeVerse {
         else
             return null;
     }
+    private String findNextWord(String lastWord){
+        ArrayList<Map.Entry<String, NeighborWord>> entries = sortedNeighbors(lastWord);
+        if(entries ==null)
+            return null;
+        else if( entries.size() > 2){
+            int eol = verseDB.getWordNode(lastWord).getIsEnd()/3;// odds that this word is the end of the line
+            int first = entries.get(0).getValue().getNumInstances();// odds that the most likely word is next
+            int second = entries.get(1).getValue().getNumInstances();// odds of the second most likely word
+            int third = entries.get(2).getValue().getNumInstances();// odds of the third most likely word
+            int roll = dice.nextInt(eol+first+second+third);
+            if(roll < eol){
+                verse+=".";
+                return null;
+            }
+            else if(roll < eol + first){
+                return entries.get(0).getKey();
+            }
+            else if(roll < eol+first+second){
+                return entries.get(1).getKey();
+            }
+            else{
+                return entries.get(2).getKey();
+            }
+        }
+        else return entries.get(0).getKey();
+    }
+
     @Override
     public String toString() {
-        return super.toString();
+        String next = findNextWord(currWord);
+        while(next != null){
+            verse+= " "+ next;
+            currWord = next;
+            next = findNextWord(currWord);
+        }
+        return verse;
     }
 }
