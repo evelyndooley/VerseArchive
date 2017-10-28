@@ -8,8 +8,8 @@ public class CreateDatabase {
 
     private String filePath; /** filepath of the text file from which we build database */
 
-    private final int fileNotFoundErrorCode = 1;
-    private final int javaIOErrorCode = 2;
+    private final int fileNotFoundErrorCode = 2;
+    private final int javaIOErrorCode = 3;
 
     /**
      * Constructor for database
@@ -146,9 +146,10 @@ public class CreateDatabase {
     }
 
     public static void main(String [] args) {
-        String path = "/Users/Ari/Desktop/sampleText.txt";
+        String path = "./resources/sampleText.txt";
 
         CreateDatabase database = new CreateDatabase(path);
+
     }
 
 }
