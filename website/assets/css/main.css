@@ -39,6 +39,15 @@ h2 {
 	margin-bottom: 0px;
 }
 
+.title {
+	text-align:center;
+	letter-spacing:4px;
+	font-size: 59px; 
+	line-height: 100px; 
+	font-family:'Linowrite';
+	font-weight:normal;
+}
+
 .sectionone p {
     margin-top: 40px;
     font-size: 21px;
@@ -50,9 +59,10 @@ h2 {
          -o-animation: fadein 1s; /* Opera < 12.1 */
             animation: fadein 1s;
 }
+
 @media (min-width: 494px) {
-	.sectionone p {
-		margin-top: 80px;
+	.title {
+		line-height: 59px;
 	}
 }
 
