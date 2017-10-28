@@ -15,7 +15,7 @@ public class MakeVerse {
     public MakeVerse(String initialWord){
         currWord= verse  = initialWord;
         dice = new Random(System.currentTimeMillis());
-        verseDB = new Database("all_HP_books.txt");
+        verseDB = new Database("all_books.txt");
     }
     /// sortedNeighbors turns the hashmap of the most recent words right hand neighbors into an ordered list
     /// of its most likely child words.
@@ -34,7 +34,7 @@ public class MakeVerse {
         if(entries ==null)
             return null;
         else if( entries.size() > 2){
-            int eol = verseDB.getWordNode(lastWord).getIsEnd()/3;// odds that this word is the end of the line
+            int eol = verseDB.getWordNode(lastWord).getIsEnd()/6;// odds that this word is the end of the line
             int first = entries.get(0).getValue().getNumInstances();// odds that the most likely word is next
             int second = entries.get(1).getValue().getNumInstances();// odds of the second most likely word
             int third = entries.get(2).getValue().getNumInstances();// odds of the third most likely word

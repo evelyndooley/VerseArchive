@@ -173,7 +173,7 @@ public class Database {
 
     public static void main(String [] args) {
         String path = "C:\\Users\\Dawn\\Documents\\GitHub\\VerseArchive\\allpoems.txt";
-        MakeVerse verse = new MakeVerse("pheonix");
+        MakeVerse verse = new MakeVerse("it");
         System.out.println(verse);
 
 
