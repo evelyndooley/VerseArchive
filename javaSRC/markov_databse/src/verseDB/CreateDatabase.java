@@ -1,3 +1,5 @@
+package verseDB;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -68,7 +70,7 @@ public class CreateDatabase {
                     if(wordMap.containsKey(word)) { //increments commonality if word is already in database
                         wordMap.get(word).incrementCommonality();
                     } else {
-                        WordNode thisWordNode = new WordNode(word); //else, instantiates new WordNode object
+                        WordNode thisWordNode = new WordNode(word); //else, instantiates new verseDB.WordNode object
                         wordMap.put(word, thisWordNode); //puts object into database
                     }
 
@@ -116,7 +118,7 @@ public class CreateDatabase {
     /**
      * returns node object for a given word.
      * @param word word node to return
-     * @return WordNode of the given word
+     * @return verseDB.WordNode of the given word
      */
     public WordNode getWordNode(String word) {
         if(wordMap.containsKey(word)) {
@@ -128,25 +130,25 @@ public class CreateDatabase {
     }
 
     /**
-     * getter for HashMap of left neighboring words containing NeighborWord objects
+     * getter for HashMap of left neighboring words containing verseDB.NeighborWord objects
      * @param word word for which you would like its left neighbors
-     * @return hashmap of left neighboring words containing NeighborWord objects
+     * @return hashmap of left neighboring words containing verseDB.NeighborWord objects
      */
     public HashMap<String, NeighborWord> getLeftNeighborsMap (String word) {
         return wordMap.get(word).getLeftNeighbors();
     }
 
     /**
-     * getter for HashMap of right neighboring words containing NeighborWord objects
+     * getter for HashMap of right neighboring words containing verseDB.NeighborWord objects
      * @param word word for which you would like its right neighbors
-     * @return hashmap of right neighboring words containing NeighborWord objects
+     * @return hashmap of right neighboring words containing verseDB.NeighborWord objects
      */
     public HashMap<String, NeighborWord> getRightNeighborsMap (String word) {
         return wordMap.get(word).getRightNeighbors();
     }
 
     public static void main(String [] args) {
-        String path = "./resources/sampleText.txt";
+        String path = "../resources/sampleText.txt";
 
         CreateDatabase database = new CreateDatabase(path);
 

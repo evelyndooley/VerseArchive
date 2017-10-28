@@ -1,12 +1,14 @@
+package verseDB;
+
 public class NeighborWord {
 
     private int numInstances = 1; /**number of instances of this neighbor */
-    private String word; /**word that is a neighbor of a WordNode */
+    private String word; /**word that is a neighbor of a verseDB.WordNode */
     private WordNode thisWord; /**wordNode for which this is a neighbor */
 
     /**
-     * Constructor for NeighborWord
-     * @param word word that is a neighbor or a WordNode
+     * Constructor for verseDB.NeighborWord
+     * @param word word that is a neighbor or a verseDB.WordNode
      */
     public  NeighborWord(String word) {this.word = word;}
 
@@ -26,7 +28,7 @@ public class NeighborWord {
     public String getWordString(){return word;}
 
     /**
-     * @return the WordNode for which this is a neighbor
+     * @return the verseDB.WordNode for which this is a neighbor
      */
     public WordNode getWordNode(){return thisWord;}
 

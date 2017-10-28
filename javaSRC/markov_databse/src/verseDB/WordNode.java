@@ -1,3 +1,5 @@
+package verseDB;
+
 import java.util.HashMap;
 
 public class WordNode {
@@ -20,7 +22,7 @@ public class WordNode {
 
     /**
      * Adds neighbor to leftNeighbors HashMap
-     * @param lneighbor NeighborWord object to add
+     * @param lneighbor verseDB.NeighborWord object to add
      */
     public void addLeftNeighbor(NeighborWord lneighbor) {
         String wordString = lneighbor.getWordString(); //string of the neighboring word
@@ -64,7 +66,7 @@ public class WordNode {
 
     /**
      * Adds neighbor to rightNeighbors HashMap
-     * @param rneighbor NeighborWord object to add
+     * @param rneighbor verseDB.NeighborWord object to add
      */
     public void addRightNeighbor(NeighborWord rneighbor) {
         String wordString = rneighbor.getWordString(); //string of the neighboring word
