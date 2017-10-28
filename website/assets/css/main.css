@@ -60,19 +60,6 @@ h2 {
             animation: fadein 1s;
 }
 
-@media (max-width: 500px) {
-	.title {
-		line-height: 59px;
-	}
-	.sectionone p {
-		margin-left: 10%;
-		margin-right: 10%
-	}
-	textarea {
-		margin-top: 10px;
-	}
-}
-
 @keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }
@@ -135,4 +122,18 @@ textarea {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+}
+
+
+@media (max-width: 500px) {
+	.title {
+		line-height: 59px;
+	}
+	.sectionone p {
+		margin-left: 5%;
+		margin-right: 5%
+	}
+	textarea {
+		margin-top: 10px;
+	}
 }
