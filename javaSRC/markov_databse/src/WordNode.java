@@ -37,6 +37,9 @@ public class WordNode {
         leftNeighbors.get(word).incrementInstances();
     }
 
+    public HashMap<String, NeighborWord> getLeftNeighbors() {
+        return leftNeighbors;
+    }
 
     public void addRightNeighbor(NeighborWord lneighbor) {
         String wordString = lneighbor.getWordString();
@@ -59,6 +62,10 @@ public class WordNode {
 
     public void incrementRightNeighbor(String word) {
         rightNeighbors.get(word).incrementInstances();
+    }
+
+    public HashMap<String, NeighborWord> getRightNeighbors() {
+        return rightNeighbors;
     }
 
     public void incrementCommonality() {

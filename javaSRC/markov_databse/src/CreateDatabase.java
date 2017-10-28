@@ -13,6 +13,7 @@ public class CreateDatabase {
 
     public CreateDatabase(String filePath) {
         this.filePath = filePath;
+        instantiateDatabase();
     }
 
     private boolean isEndPunctuation(char lastCharOfWord) {
@@ -23,6 +24,9 @@ public class CreateDatabase {
             return false;
         }
     }
+
+    private HashMap<String, WordNode> wordMap = new HashMap<>();
+
 
 //    private String removeEndPunctuation(String word) {
 //        String strippedWord = word;
@@ -37,8 +41,6 @@ public class CreateDatabase {
 
     private void instantiateDatabase() {
         BufferedReader br;
-
-        HashMap<String, WordNode> wordMap = new HashMap<>();
 
         try {
             br = new BufferedReader(new FileReader(filePath));
@@ -89,9 +91,9 @@ public class CreateDatabase {
                     if ((i + 1) < lineArray.length) {
                         String nextWord = lineArray[i+1];
 
-                        if((wordMap.get(word).checkLeftNeighbors(nextWord)) == 0) {
+                        if((wordMap.get(word).checkRightNeighbors(nextWord)) == 0) {
                             NeighborWord nextWordNeighbor = new NeighborWord(nextWord);
-                            wordMap.get(word).addLeftNeighbor(nextWordNeighbor);
+                            wordMap.get(word).addRightNeighbor(nextWordNeighbor);
                         }
                         else {
                             wordMap.get(word).incrementRightNeighbor(word);
@@ -109,4 +111,23 @@ public class CreateDatabase {
         }
 
     }
+
+    public WordNode getWordNode(String word) {
+        return wordMap.get(word);
+    }
+
+    public HashMap<String, NeighborWord> getLeftNeighborsMap (String word) {
+        return wordMap.get(word).getLeftNeighbors();
+    }
+
+    public HashMap<String, NeighborWord> getRightNeighborsMap (String word) {
+        return wordMap.get(word).getRightNeighbors();
+    }
+
+    public static void main(String [] args) {
+        String path = "/Users/Ari/Desktop/sampleText.txt";
+
+        CreateDatabase database = new CreateDatabase(path);
+    }
+
 }
