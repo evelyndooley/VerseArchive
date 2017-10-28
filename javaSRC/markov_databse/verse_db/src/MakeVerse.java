@@ -15,7 +15,7 @@ public class MakeVerse {
     public MakeVerse(String initialWord){
         currWord= verse  = initialWord;
         dice = new Random(System.currentTimeMillis());
-        verseDB = new Database("C:\\Users\\Dawn\\Documents\\GitHub\\VerseArchive\\allpoems.txt");
+        verseDB = new Database("allpoems.txt");
     }
     /// sortedNeighbors turns the hashmap of the most recent words right hand neighbors into an ordered list
     /// of its most likely child words.
