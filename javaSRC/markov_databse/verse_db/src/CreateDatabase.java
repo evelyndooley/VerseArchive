@@ -43,7 +43,7 @@ public class CreateDatabase {
      */
     private String stripWord(String word) {
         word = word.replaceAll("[^a-zA-Z]", "");
-        return word = word.toLowerCase();
+        return  word.toLowerCase();
     }
 
     /**
@@ -80,7 +80,7 @@ public class CreateDatabase {
                             word = stripWord(word);
 
                             if(word.length() == 1) { //removes all single character words that aren't 'a' or 'i'
-                                if(!word.equals('a') || !word.equals(i)) {
+                                if(!word.equals("a") || !word.equals("i")) {
                                     continue;
                                 }
                             }
@@ -167,13 +167,11 @@ public class CreateDatabase {
     }
 
     public static void main(String [] args) {
-        String path = "../../allpoems.txt";
+        String path = "C:\\Users\\Dawn\\Documents\\GitHub\\VerseArchive\\allpoems.txt";
+        MakeVerse verse = new MakeVerse("");
+        System.out.println(verse.sortedNeighbors("of"));
 
-        CreateDatabase database = new CreateDatabase(path);
 
-        System.out.println(database.wordMap.keySet());
-
-        System.out.println(database.wordMap.get("of").getRightNeighbors().keySet());
 
     }
 
