@@ -60,7 +60,7 @@ h2 {
             animation: fadein 1s;
 }
 
-@media (min-width: 494px) {
+@media (max-width: 500px) {
 	.title {
 		line-height: 59px;
 	}
