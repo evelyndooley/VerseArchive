@@ -100,6 +100,9 @@ textarea {
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
+    width: 80%; 
+    height: 60vh; 
+    text-align: center;
 }
 
 #background {
@@ -135,5 +138,6 @@ textarea {
 	}
 	textarea {
 		margin-top: 10px;
+		height: 40vh;
 	}
 }
