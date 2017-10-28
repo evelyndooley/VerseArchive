@@ -21,6 +21,7 @@ body {
 }
 
 .header {
+	padding-top: 5px;
 	height: 100px;
 }
 
@@ -100,6 +101,9 @@ textarea {
 }
 
 #submit {
+	font-family:'Linowrite';
+    font-weight:normal;
+    color: rgb(0, 0, 70);
 	margin-top: 15px;
     display: block;
     margin-left: auto;
