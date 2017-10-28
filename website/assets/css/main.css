@@ -50,7 +50,7 @@ h2 {
          -o-animation: fadein 1s; /* Opera < 12.1 */
             animation: fadein 1s;
 }
-@media (max-width: 494px) {
+@media (min-width: 494px) {
 	.sectionone p {
 		margin-top: 80px;
 	}
