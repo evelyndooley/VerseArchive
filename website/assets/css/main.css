@@ -38,11 +38,6 @@ h2 {
 	margin-top: 0; 
 	margin-bottom: 0px;
 }
-@media {max-height: 494px) {
-	h2 {
-		margin-top: 30px;
-	}
-}
 
 .sectionone p {
     margin-top: 40px;
@@ -54,6 +49,11 @@ h2 {
         -ms-animation: fadein 1s; /* Internet Explorer */
          -o-animation: fadein 1s; /* Opera < 12.1 */
             animation: fadein 1s;
+}
+@media (max-height: 494px) {
+	.sectionone p {
+		margin-top: 80px;
+	}
 }
 
 @keyframes fadein {
