@@ -64,6 +64,13 @@ h2 {
 	.title {
 		line-height: 59px;
 	}
+	.sectionone p {
+		margin-left: 10%;
+		margin-right: 10%
+	}
+	textarea {
+		margin-top: 10px;
+	}
 }
 
 @keyframes fadein {
