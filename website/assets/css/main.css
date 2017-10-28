@@ -82,3 +82,10 @@ textarea {
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
+
+#background {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: -1;
+}
