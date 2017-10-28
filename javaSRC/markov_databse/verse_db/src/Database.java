@@ -148,7 +148,7 @@ public class Database {
         if(wordMap.containsKey(word)) {
             return wordMap.get(word);
         } else {
-            System.out.println("WORD NOT IN wordMap DATABASE");
+            System.out.println(word +" NOT IN wordMap DATABASE");
             return null;
         }
     }
@@ -173,7 +173,7 @@ public class Database {
 
     public static void main(String [] args) {
         String path = "C:\\Users\\Dawn\\Documents\\GitHub\\VerseArchive\\allpoems.txt";
-        MakeVerse verse = new MakeVerse("love");
+        MakeVerse verse = new MakeVerse("pheonix");
         System.out.println(verse);
 
 
