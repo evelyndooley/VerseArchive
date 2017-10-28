@@ -1,15 +1,18 @@
-import java.util.ArrayList;
 import java.util.HashMap;
 
 public class WordNode {
 
-    private int commonality = 1;
+    private int commonality = 0;
     private int isEnd = 0;
+
+    private String word;
 
     private HashMap<String, NeighborWord> leftNeighbors;
     private HashMap<String, NeighborWord> rightNeighbors;
 
-
+    public WordNode(String word){
+        this.word = word;
+    }
 
     public void addLeftNeighbor(NeighborWord lneighbor) {
         String wordString = lneighbor.getWordString();
@@ -30,6 +33,11 @@ public class WordNode {
         }
     }
 
+    public void incrementLeftNeighbor(String word) {
+        leftNeighbors.get(word).incrementInstances();
+    }
+
+
     public void addRightNeighbor(NeighborWord lneighbor) {
         String wordString = lneighbor.getWordString();
 
@@ -47,6 +55,10 @@ public class WordNode {
         else {
             return 0;
         }
+    }
+
+    public void incrementRightNeighbor(String word) {
+        rightNeighbors.get(word).incrementInstances();
     }
 
     public void incrementCommonality() {
