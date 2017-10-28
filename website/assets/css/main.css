@@ -38,6 +38,11 @@ h2 {
 	margin-top: 0; 
 	margin-bottom: 0px;
 }
+@media {max-height: 494px) {
+	h2 {
+		margin-top: 30px;
+	}
+}
 
 .sectionone p {
     margin-top: 40px;
