@@ -5,12 +5,36 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>VerseArchive</title>
 		<link rel="stylesheet" href="assets/css/main.css" type="text/css" />
+		<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
 	</head>
 	<body>
+		<script>
+			var background = document.getElementById('background');
+			var dimensions = background.getClientRects()[0];
+			var pattern = Trianglify({
+  			  width: dimensions.width, 
+			    height: dimensions.height
+			});
+			background.appendChild(pattern.canvas());
+		</script>
+	<div>
 		<div class="header">
-			<h2 style="margin:27px 0;text-align:center;letter-spacing:2px;text-shadow: 2px 2px 8px black;font-size: 48px">
+			<h2 style="text-align:center;letter-spacing:4px;font-size: 59px; line-height: 100px; font-weight: lighter;">
 				Verse Archive
 			</h2>
 		</div>
+		<div class="sectionone">
+			<p>
+				A simple verse generator utilizing poetry data gathered from Project Gutenberg. 
+				<br>
+				Enter your starting word and we'll make a verse for you.
+			</p>
+		</div>
+		<div class="textbox">
+			<textarea style="width: 80%; height: 60vh; text-align: center;"> Enter your starting word here!
+			</textarea>
+		</div>	
+	</div>
 	</body>
 </html>
