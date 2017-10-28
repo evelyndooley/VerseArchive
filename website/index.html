@@ -1,29 +1,37 @@
 <!DOCTYPE html>
-<html lang="en-us">
+<html lang="en-us" xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>VerseArchive</title>
 		<link rel="stylesheet" href="assets/css/main.css" type="text/css" />
-		<link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="assets/css/style.css"/>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/trianglify/0.4.0/trianglify.min.js"></script>
+		<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js" type="text/javascript"></script>
+   		<script>
+    		$(function() {
+		      $('.clear').one('focus', function() {
+		        this.value = '';
+		      });
+ 		   });
+ 	   </script>
 	</head>
 	<body onload="divtest();">
 	<div id="background" class="fullscreen background">
 		<div class="header">
-			<h2 style="text-align:center;letter-spacing:4px;font-size: 59px; line-height: 100px; font-weight: lighter;">
+			<h2 style="text-align:center;letter-spacing:4px;font-size: 59px; line-height: 100px; font-family:'Linowrite';font-weight:normal;">
 				Verse Archive
 			</h2>
 		</div>
 		<div class="sectionone">
-			<p>
+			<p style="font-family:'Linowrite';font-weight:normal;">
 				A simple verse generator utilizing poetry data gathered from Project Gutenberg. 
 				<br>
 				Enter your starting word and we'll make a verse for you.
 			</p>
 		</div>
 		<div class="textbox">
-			<textarea id="textbox" style="width: 80%; height: 60vh; text-align: center;"> Enter your starting word here!
+			<textarea id="textbox" style="width: 80%; height: 60vh; text-align: center;"  class="clear"> Enter your starting word here!
 			</textarea>
 			<button id="submit">Submit!</button>
 		</div>	
