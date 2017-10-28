@@ -4,3 +4,4 @@
 *.jar
 *.xml
 javaSRC/markov_databse/MavenProject/MavenProject.iml
+*.class
