@@ -1,5 +1,7 @@
 import java.util.HashMap;
-
+/**
+ * @author Ari Bernstein
+ */
 public class WordNode {
 
     private int commonality = 0; /** number of instances of word */

@@ -8,7 +8,7 @@ import java.util.Random;
  */
 
 public class MakeVerse {
-    private CreateDatabase verseDB;
+    private Database verseDB;
     private Random dice;
     private String verse ="";
     public MakeVerse(String initialWord){
