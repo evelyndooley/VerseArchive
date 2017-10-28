@@ -85,7 +85,7 @@ public class Database {
                             word = stripWord(word);
 
                             if(word.length() == 1) { //removes all single character words that aren't 'a' or 'i'
-                                if(!word.equals("a") || !word.equals("i")) {
+                                if(!word.equals("a") && !word.equals("i")) {
                                     continue;
                                 }
                             }
@@ -173,8 +173,9 @@ public class Database {
 
     public static void main(String [] args) {
         String path = "C:\\Users\\Dawn\\Documents\\GitHub\\VerseArchive\\allpoems.txt";
-        MakeVerse verse = new MakeVerse("");
-        System.out.println(verse.sortedNeighbors("of"));
+        MakeVerse verse = new MakeVerse("love");
+        System.out.println(verse);
+
 
 
 

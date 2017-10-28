@@ -1,11 +1,11 @@
-Index: javaSRC/markov_databse/verse_db/src/CreateDatabase.java
+Index: javaSRC/markov_databse/verse_db/src/Database.java
 IDEA additional info:
 Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
 <+>UTF-8
 ===================================================================
---- javaSRC/markov_databse/verse_db/src/CreateDatabase.java	(revision bd5eab7e21a669854b566d42831b6c4705168c1e)
-+++ javaSRC/markov_databse/verse_db/src/CreateDatabase.java	(revision )
-@@ -80,7 +80,7 @@
+--- javaSRC/markov_databse/verse_db/src/Database.java	(revision 4cc6f3beb3e47ed586a0065fd67c75f80e043086)
++++ javaSRC/markov_databse/verse_db/src/Database.java	(revision )
+@@ -85,7 +85,7 @@
                              word = stripWord(word);
  
                              if(word.length() == 1) { //removes all single character words that aren't 'a' or 'i'
@@ -14,7 +14,7 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
                                      continue;
                                  }
                              }
-@@ -143,7 +143,7 @@
+@@ -148,7 +148,7 @@
          if(wordMap.containsKey(word)) {
              return wordMap.get(word);
          } else {
@@ -23,104 +23,62 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
              return null;
          }
      }
-@@ -168,9 +168,9 @@
+@@ -173,8 +173,8 @@
  
      public static void main(String [] args) {
          String path = "C:\\Users\\Dawn\\Documents\\GitHub\\VerseArchive\\allpoems.txt";
 -        MakeVerse verse = new MakeVerse("");
 -        System.out.println(verse.sortedNeighbors("of"));
--
-+        MakeVerse verse = new MakeVerse("music");
-+//        System.out.println(verse.sortedNeighbors("of"));
-+        System.out.println(verse.toString());
++        MakeVerse verse = new MakeVerse("Love");
++        System.out.println(verse);
  
  
-     }
+ 
 \ No newline at end of file
-Index: javaSRC/markov_databse/verse_db/src/NeighborWord.java
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
+Index: .idea/RESTGET.java
 ===================================================================
---- javaSRC/markov_databse/verse_db/src/NeighborWord.java	(revision bd5eab7e21a669854b566d42831b6c4705168c1e)
-+++ javaSRC/markov_databse/verse_db/src/NeighborWord.java	(revision )
-@@ -30,6 +30,11 @@
-      */
-     public WordNode getWordNode(){return thisWord;}
- 
-+    @Override
-+    public String toString() {
-+        return Integer.toString(numInstances);
-+    }
-+
-     /**
-      * @return The number of instances of this word as a neighbor of a given wordNode
-      */
-Index: javaSRC/markov_databse/verse_db/src/MakeVerse.java
-IDEA additional info:
-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
-<+>UTF-8
-===================================================================
---- javaSRC/markov_databse/verse_db/src/MakeVerse.java	(revision bd5eab7e21a669854b566d42831b6c4705168c1e)
-+++ javaSRC/markov_databse/verse_db/src/MakeVerse.java	(revision )
-@@ -11,14 +11,15 @@
-     private CreateDatabase verseDB;
-     private Random dice;
-     private String verse ="";
-+    private String currWord = "";
-     public MakeVerse(String initialWord){
--        verse = initialWord;
-+        currWord= verse  = initialWord;
-         dice = new Random(System.currentTimeMillis());
-         verseDB = new CreateDatabase("C:\\Users\\Dawn\\Documents\\GitHub\\VerseArchive\\allpoems.txt");
-     }
-     /// sortedNeighbors turns the hashmap of the most recent words right hand neighbors into an ordered list
-     /// of its most likely child words.
--    public  ArrayList<Map.Entry<String, NeighborWord>> sortedNeighbors(String lastWord){
-+    private  ArrayList<Map.Entry<String, NeighborWord>> sortedNeighbors(String lastWord){
-         if(verseDB.getWordNode(lastWord) != null){
-             HashMap<String,NeighborWord> nextMap = verseDB.getRightNeighborsMap(lastWord);
-             ArrayList<Map.Entry<String, NeighborWord>> sortMap= new ArrayList<>(nextMap.entrySet());
-@@ -28,8 +29,41 @@
-         else
-             return null;
-     }
-+    private String findNextWord(String lastWord){
-+        ArrayList<Map.Entry<String, NeighborWord>> entries = sortedNeighbors(lastWord);
-+        if(entries ==null)
-+            return null;
-+        else if( entries.size() > 2){
-+            int eol = verseDB.getWordNode(lastWord).getIsEnd()/3;// odds that this word is the end of the line
-+            int first = entries.get(0).getValue().getNumInstances();// odds that the most likely word is next
-+            int second = entries.get(1).getValue().getNumInstances();// odds of the second most likely word
-+            int third = entries.get(2).getValue().getNumInstances();// odds of the third most likely word
-+            int roll = dice.nextInt(eol+first+second+third);
-+            if(roll < eol){
-+                verse+=".";
-+                return null;
-+            }
-+            else if(roll < eol + first){
-+                return entries.get(0).getKey();
-+            }
-+            else if(roll < eol+first+second){
-+                return entries.get(1).getKey();
-+            }
-+            else{
-+                return entries.get(2).getKey();
-+            }
-+        }
-+        else return entries.get(0).getKey();
-+    }
-+
-     @Override
-     public String toString() {
--        return super.toString();
-+        String next = findNextWord(currWord);
-+        while(next != null){
-+            verse+= " "+ next;
-+            currWord = next;
-+            next = findNextWord(currWord);
-+        }
-+        return verse;
-     }
- }
+--- .idea/RESTGET.java	(revision 4cc6f3beb3e47ed586a0065fd67c75f80e043086)
++++ .idea/RESTGET.java	(revision 4cc6f3beb3e47ed586a0065fd67c75f80e043086)
+@@ -1,42 +0,0 @@
+-
+-
+-import java.io.IOException;
+-import javax.servlet.ServletException;
+-import javax.servlet.annotation.WebServlet;
+-import javax.servlet.http.HttpServlet;
+-import javax.servlet.http.HttpServletRequest;
+-import javax.servlet.http.HttpServletResponse;
+-
+-/**
+- * @author Andrew Berson (axb4069)
+- * Servlet implementation class RESTGET
+- */
+-@WebServlet("/RESTGET")
+-public class RESTGET extends HttpServlet {
+-	private static final long serialVersionUID = 1L;
+-       
+-    /**
+-     * @see HttpServlet#HttpServlet()
+-     */
+-    public RESTGET() {
+-        super();
+-        // TODO Auto-generated constructor stub
+-    }
+-
+-	/**
+-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+-	 */
+-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+-		response.setContentType("text/plain");
+-		
+-		response.getWriter().write(new MakeVerse(request.));
+-	}
+-
+-	/**
+-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+-	 */
+-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+-		// TODO Auto-generated method stub
+-	}
+-
+-}
